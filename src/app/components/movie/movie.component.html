@@ -1,0 +1,33 @@
+<div class="container main-container animated fadeIn" *ngIf="movie">
+    <h1>{{movie.original_title}} <small>({{movie.release_date | date:'yyyy'}})</small></h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <img [src]="movie | imgMovie:true" [alt]="movie.original_title" class="img-thumbnail img-fluid">
+        </div>
+        <div class="col-md-7">
+            <h3>Overview</h3>
+            <p class="text-justify">{{movie.overview}}</p>
+            <br>
+            <p>
+                {{movie.tagline}}
+            </p>
+            <p>
+                Popularity: <span class="bagde badge-info p-1">
+                    {{ movie.vote_average | number: '1.1-1' }}
+                </span>
+            </p>
+
+            <p>Homepage: <a [href]="movie.homepage" target="_blank"> {{movie.homepage}}</a></p>
+
+            <button class="btn btn-outline-danger" [routerLink]="['/'+previousPage, search]">Back</button>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let company of movie.production_companies" class="m-1 logo">
+            <img [src]="company | imgMovie:false:true" class="img-thumbnail" [alt]="company.name">
+            <small class="badge badge-dark">{{company.name}}</small>
+
+        </div>
+    </div>
+</div>

@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { MoviesService } from './services/movies.service';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { SearchComponent } from './components/search/search.component';
+import { MovieComponent } from './components/movie/movie.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'home', component: HomeComponent},
+  {path:'movie/:id/:page', component: MovieComponent},
+  {path:'movie/:id/:page/:search', component: MovieComponent},
+  {path:'search', component: SearchComponent},
+  {path:'search/:text', component: SearchComponent},
+  {path:'gallery', component: GalleryComponent},
+  {path:'**', pathMatch: 'full',redirectTo: 'home'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

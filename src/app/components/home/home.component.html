@@ -1,0 +1,21 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Movies App</h1>
+        <p class="lead">My first movies app</p>
+    </div>
+</div>
+
+<div class="container">
+    <br>
+    
+    <app-gallery title="This week on theaters" [movies] = "weekMovies | slice:0:6"></app-gallery>
+
+
+    <br>
+    
+    <app-gallery title="Populars for Kids" [movies] = "kidsMovies | slice:0:6"></app-gallery>
+
+    <br>
+    
+    <app-gallery title="Populars" [movies] = "populars | slice:0:6"></app-gallery>
+</div>

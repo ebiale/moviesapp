@@ -1,0 +1,26 @@
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Search</label>
+                <input type="text" [(ngModel)]="search" name="search" class="form-control" placeholder="Search movies"
+                    (keyup.enter)="searchMovie()">
+            </div>
+        </div>
+    </div>
+
+    <div class="row animated fadeIn">
+        <div class="card-columns">
+            <div class="card" *ngFor="let movie of ms.movies">
+                <img [src]="movie | imgMovie" class="card-img-top" [alt]="movie.title">
+                <span class="badge badge-danger vote">{{movie.vote_average | number:'1.1-1'}}</span>
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p class="card-text text-justify">{{movie.overview | slice:0:250}}...</p>
+                    <button type="button" class="btn btn-outline-info btn-block"
+                    [routerLink]="['/movie', movie.id, 'search', search]">More</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
